@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>URBAN CORRODE AFRICA | Official Store</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    :root { --brand-dark: #0f0f0f; --brand-accent: #ff4d00; }
+    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #1a1a1a; overflow-x: hidden; }
+    h1, h2, .navbar-brand { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+
+    /* --- Navbar Styling --- */
+    .navbar-brand {
+      white-space: normal;
+      max-width: 75%;
+      line-height: 1.2;
+      font-size: 1.1rem;
+    }
+
+    @media (max-width: 991px) {
+      .navbar-brand { font-size: 0.9rem; }
+      .navbar-toggler { margin-top: 5px; border-color: rgba(255,255,255,0.1); }
+      .navbar-collapse { background: #212529; padding: 20px; border-radius: 0 0 10px 10px; }
+    }
+
+    /* --- Full Viewport Carousel --- */
+    .carousel-item {
+      height: 100vh;
+      width: 100vw;
+      background: no-repeat center center scroll;
+      background-size: cover;
+    }
+
+    .carousel-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0,0,0,0.6); display: flex; align-items: center;
+      justify-content: center; color: white; text-align: center;
+    }
+
+    /* --- WhatsApp Floating Button --- */
+    .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white;
+      width: 60px; height: 60px; border-radius: 50%; text-align: center; font-size: 30px;
+      box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+
+    /* --- Shop Section --- */
+    .product-card { border: none; transition: 0.3s; background: none; }
+    .product-card img { border-radius: 0; width: 100%; height: 400px; object-fit: cover; background: #eee; }
+    .product-card:hover { transform: translateY(-5px); }
+
+    /* --- Gallery Hover Zoom Effect --- */
+    .gallery-container { overflow: hidden; position: relative; }
+    .gallery-img {
+      width: 100%; height: 450px; object-fit: cover;
+      filter: grayscale(100%); transition: transform 0.6s ease, filter 0.6s ease;
+      border: 1px solid #333;
+    }
+    .gallery-container:hover .gallery-img { filter: grayscale(0%); transform: scale(1.1); }
+
+    .social-link { color: white; font-size: 1.5rem; margin: 0 15px; transition: 0.3s; text-decoration: none; }
+    .social-link:hover { color: var(--brand-accent); }
+  </style>
+</head>
+<body>
+
+<a href="https://wa.me/233554914575" class="whatsapp-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
+  <div class="container d-flex align-items-start align-items-lg-center">
+    <a class="navbar-brand fw-bold" href="#">URBAN CORRODE<br class="d-lg-none"> AFRICA</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link px-3" href="#shop">STORE</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="#gallery">GALLERY</a></li>
+        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+          <a href="#order" class="btn btn-danger px-4 rounded-0 fw-bold w-100">SHOP NOW</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active" style="background-image: url('images/street%20uca%20pull%20over.jpg');">
+      <div class="carousel-overlay">
+        <div class="container px-4">
+          <h1 class="display-3 fw-bold mb-3">URBAN CORRODE AFRICA</h1>
+          <p class="h5 mb-4 opacity-75">STREETWEAR FOR THE GRITTY. LOCATED AT KsTU.</p>
+          <a href="#shop" class="btn btn-outline-light rounded-0 px-5 py-2">EXPLORE COLLECTION</a>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item" style="background-image: url('images/street%20normal%20white%20uca.jpg');">
+      <div class="carousel-overlay">
+        <div class="container px-4">
+          <h1 class="display-3 fw-bold mb-3">THE WHITE COLLECTION</h1>
+          <p class="h5 mb-4 opacity-75">CLEAN. BOLD. ESSENTIAL.</p>
+          <a href="#order" class="btn btn-danger rounded-0 px-5 py-2">ORDER NOW</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  </button>
+</div>
+
+<section id="shop" class="py-5 bg-white">
+  <div class="container">
+    <h2 class="text-center mb-5 border-bottom pb-3">THE DROPS</h2>
+
+    <div class="row g-4 mb-5">
+      <div class="col-12"><h4 class="fw-bold mb-4">01. WHITE COLLECTION</h4></div>
+      <div class="col-md-4">
+        <div class="card product-card">
+          <img src="images/white%20normal%20uca%20shirt.jpg" alt="White Tee">
+          <div class="card-body px-0"><h6 class="fw-bold mb-0 text-uppercase">Urban Tee</h6><p class="small text-muted">150 GHS</p></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product-card">
+          <img src="images/white%20pull%20over.jpg" alt="White Hoodie">
+          <div class="card-body px-0"><h6 class="fw-bold mb-0 text-uppercase">Corrode Pullover</h6><p class="small text-muted">250 GHS</p></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product-card">
+          <img src="images/white%20crop%20top%20uca.png" alt="White Crop">
+          <div class="card-body px-0"><h6 class="fw-bold mb-0 text-uppercase">Street Crop (Ladies)</h6><p class="small text-muted">120 GHS</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12"><h4 class="fw-bold mb-4">02. BLACK COLLECTION</h4></div>
+      <div class="col-md-4">
+        <div class="card product-card">
+          <img src="images/black%20normal%20uca%20shirt.png" alt="Black Tee">
+          <div class="card-body px-0"><h6 class="fw-bold mb-0 text-uppercase">Urban Tee</h6><p class="small text-muted">150 GHS</p></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product-card">
+          <img src="images/black%20pull%20over.png" alt="Black Hoodie">
+          <div class="card-body px-0"><h6 class="fw-bold mb-0 text-uppercase">Corrode Pullover</h6><p class="small text-muted">250 GHS</p></div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card product-card">
+          <img src="images/black%20crop%20top%20uca.jpg" alt="Black Crop">
+          <div class="card-body px-0"><h6 class="fw-bold mb-0 text-uppercase">Street Crop (Ladies)</h6><p class="small text-muted">120 GHS</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="py-5 bg-dark text-white">
+  <div class="container text-center">
+    <h2 class="mb-3">JOIN THE CORRODE TRIBE</h2>
+    <p class="lead mb-5 text-secondary px-3">WhatsApp a professional photo of you rocking the brand to be featured here.</p>
+    <div class="row g-0">
+      <div class="col-md-4 gallery-container"><img src="images/streep%20uca%20crop%20top%203.jpg" class="gallery-img" alt="Fan Photo"></div>
+      <div class="col-md-4 gallery-container"><img src="images/street%20uca%20pull%20over.jpg" class="gallery-img" alt="Fan Photo"></div>
+      <div class="col-md-4 gallery-container"><img src="images/street%20normal%20white%20uca.jpg" class="gallery-img" alt="Fan Photo"></div>
+    </div>
+  </div>
+</section>
+
+<section id="order" class="py-5">
+  <div class="container px-4" style="max-width: 850px;">
+    <div class="card p-4 p-md-5 shadow-lg border-0 rounded-0">
+      <h2 class="text-center mb-4">SECURE YOUR PIECE</h2>
+      <form name="urban-corrode-orders" method="POST" data-netlify="true">
+        <div class="row g-3">
+          <div class="col-md-6"><input type="text" name="name" class="form-control" placeholder="Full Name" required></div>
+          <div class="col-md-6"><input type="tel" name="phone" class="form-control" placeholder="WhatsApp Number" required></div>
+
+          <div class="col-md-5">
+            <select name="product" class="form-select" required>
+              <option value="" disabled selected>Select Product</option>
+              <option>Urban Tee</option>
+              <option>Corrode Hoodie</option>
+              <option>Street Crop</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <select name="color" class="form-select" required>
+              <option value="" disabled selected>Color</option>
+              <option>Midnight Black</option>
+              <option>Classic White</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <select name="size" class="form-select">
+              <option>S</option><option>M</option><option>L</option><option>XL</option>
+            </select>
+          </div>
+
+          <div class="col-12 mt-4">
+            <label class="form-label fw-bold">Delivery Destination</label>
+            <select name="delivery" class="form-select mb-3" required>
+              <option value="KsTU">In/Around KsTU Campus (FREE)</option>
+              <option value="Outside">Outside Campus (Delivery Fee Applies)</option>
+            </select>
+            <textarea name="address" class="form-control" rows="2" placeholder="Hostel/Room/Landmark Details" required></textarea>
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn btn-dark w-100 py-3 fw-bold rounded-0">CONFIRM ORDER</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="py-5 bg-dark text-white text-center">
+  <div class="mb-4">
+    <p class="small text-secondary mb-3 text-uppercase">Follow us @urbancorrodeafrica</p>
+    <a href="https://instagram.com/urbancorrodeafrica" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://tiktok.com/@urbancorrodeafrica" class="social-link" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <a href="https://facebook.com/urbancorrodeafrica" class="social-link" target="_blank"><i class="fab fa-facebook"></i></a>
+  </div>
+  <p class="mb-0 small opacity-50">© 2026 URBAN CORRODE AFRICA. BUILT BY SELMAN CREATIONS.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
