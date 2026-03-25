@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UCA | Production Dashboard</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root { --brand-accent: #ff4d00; --brand-dark: #111; }
+    body { background: #f8f9fa; font-family: 'Inter', sans-serif; padding-bottom: 50px; }
+
+    .navbar { background-color: var(--brand-dark); border-bottom: 3px solid var(--brand-accent); }
+    .order-card { border: none; border-left: 5px solid var(--brand-accent); border-radius: 0; transition: 0.3s; }
+    .order-card:hover { transform: translateY(-5px); }
+
+    .stats-card { border-radius: 0; border: none; }
+    .item-list { background: #fff8f5; padding: 12px; border: 1px dashed var(--brand-accent); border-radius: 4px; }
+
+    #loading { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 1000; }
+    .status-pill { font-size: 0.75rem; padding: 4px 10px; border-radius: 20px; font-weight: bold; text-transform: uppercase; }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-dark mb-4 py-3">
+  <div class="container d-flex justify-content-between">
+    <span class="navbar-brand fw-bold text-uppercase" style="letter-spacing: 1px;">UCA PRODUCTION LINE</span>
+    <button class="btn btn-sm btn-outline-light" onclick="fetchOrders()">
+      <i class="fas fa-sync-alt me-1"></i> Refresh
+    </button>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="row g-3 mb-5">
+    <div class="col-6 col-md-4">
+      <div class="card bg-dark text-white p-3 shadow-sm stats-card">
+        <small class="text-secondary text-uppercase fw-bold" style="font-size: 0.7rem;">Lifetime Sales</small>
+        <h2 id="total-sales-count" class="mb-0 fw-bold">0</h2>
+      </div>
+    </div>
+    <div class="col-6 col-md-4">
+      <div class="card bg-white p-3 shadow-sm stats-card" style="border-left: 5px solid var(--brand-accent) !important;">
+        <small class="text-muted text-uppercase fw-bold" style="font-size: 0.7rem;">Total Revenue (GHS)</small>
+        <h2 id="total-revenue" class="mb-0 fw-bold text-dark">0</h2>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="fw-bold mb-4 text-uppercase"><i class="fas fa-box-open me-2 text-danger"></i> Pending Fulfillment</h4>
+
+  <div id="loading" class="text-center" style="display:none;">
+    <div class="spinner-border text-danger" role="status"></div>
+    <p class="mt-2 text-muted">Fetching Orders...</p>
+  </div>
+
+  <div class="row g-4" id="order-container">
+  </div>
+</div>
+
+<script>
+  // --- CONFIGURATION ---
+  const ACCESS_PASSWORD = "UCA_PACK_2026"; // Change this whenever you want
+  const SUPABASE_URL = 'https://tcnbrajpchavyccfjbdu.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_c-tY_nSFpJYFE71AfwI6kQ_jb2OXm5Q'; // Use the sb_publishable... key
+
+  const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // --- SECURITY CHECK ---
+  function checkAccess() {
+    const savedAuth = sessionStorage.getItem("uca_auth");
+    if (savedAuth !== "granted") {
+      const password = prompt("ENTER PRODUCTION ACCESS CODE:");
+      if (password === ACCESS_PASSWORD) {
+        sessionStorage.setItem("uca_auth", "granted");
+        fetchOrders();
+      } else {
+        alert("Incorrect Password.");
+        document.body.innerHTML = "<div class='container text-center mt-5'><h1>⛔ UNAUTHORIZED</h1><p>Please refresh and try again.</p></div>";
+      }
+    } else {
+      fetchOrders();
+    }
+  }
+
+  // --- DASHBOARD FUNCTIONS ---
+
+  async function updateStats() {
+    // Get Count
+    const { count, error: countError } = await _supabase
+            .from('orders')
+            .select('*', { count: 'exact', head: true });
+
+    if (!countError) document.getElementById('total-sales-count').innerText = count;
+
+    // Get Total Revenue
+    const { data, error: revError } = await _supabase
+            .from('orders')
+            .select('total_price');
+
+    if (!revError) {
+      const total = data.reduce((sum, order) => sum + (parseFloat(order.total_price) || 0), 0);
+      document.getElementById('total-revenue').innerText = total;
+    }
+  }
+
+  async function fetchOrders() {
+    document.getElementById('loading').style.display = 'block';
+    updateStats(); // Refresh stats too
+
+    const { data, error } = await _supabase
+            .from('orders')
+            .select('*')
+            .eq('status', 'Pending')
+            .order('created_at', { ascending: false });
+
+    document.getElementById('loading').style.display = 'none';
+    const container = document.getElementById('order-container');
+    container.innerHTML = '';
+
+    if (error) {
+      console.error(error);
+      container.innerHTML = `<div class='alert alert-danger'>Connection Error: ${error.message}</div>`;
+      return;
+    }
+
+    if (data.length === 0) {
+      container.innerHTML = '<div class="col-12 text-center my-5 py-5"><i class="fas fa-mug-hot fa-3x text-light mb-3"></i><p class="text-muted">All orders are cleared! Great job team.</p></div>';
+      return;
+    }
+
+    data.forEach(order => {
+      const card = `
+                <div class="col-md-6 col-lg-4" id="order-${order.id}">
+                    <div class="card order-card shadow-sm h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="text-muted small fw-bold">REF: ${order.paystack_ref}</span>
+                                <span class="status-pill bg-warning text-dark">Pending</span>
+                            </div>
+
+                            <h5 class="fw-bold mb-1">${order.customer_name}</h5>
+                            <p class="small text-danger fw-bold mb-3"><i class="fas fa-location-arrow me-1"></i> ${order.delivery_zone}</p>
+
+                            <div class="item-list mb-3">
+                                <strong class="small d-block mb-1 text-muted">ITEMS TO PACK:</strong>
+                                <p class="mb-0 fw-bold">${order.items}</p>
+                            </div>
+
+                            <p class="small mb-4 text-secondary">
+                                <i class="fas fa-home me-1"></i> ${order.address}
+                            </p>
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-dark btn-sm fw-bold" onclick="markAsPacked(${order.id})">
+                                    <i class="fas fa-check-circle me-1"></i> MARK AS PACKAGED
+                                </button>
+                                <a href="https://wa.me/${order.customer_phone}" target="_blank" class="btn btn-outline-success btn-sm">
+                                    <i class="fab fa-whatsapp me-1"></i> Contact Customer
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+      container.innerHTML += card;
+    });
+  }
+
+  async function markAsPacked(orderId) {
+    const { error } = await _supabase
+            .from('orders')
+            .update({ status: 'Packed' })
+            .eq('id', orderId);
+
+    if (!error) {
+      // Remove the card from screen immediately
+      const cardElement = document.getElementById(`order-${orderId}`);
+      cardElement.style.opacity = '0';
+      setTimeout(() => { cardElement.remove(); updateStats(); }, 300);
+    } else {
+      alert("Error: " + error.message);
+    }
+  }
+
+  // --- START ---
+  checkAccess();
+</script>
+
+</body>
+</html>
