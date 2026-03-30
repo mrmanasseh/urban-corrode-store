@@ -1,65 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+  <!-- REQUIRED -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>URBAN CORRODE AFRICA | Official Store</title>
+  <title>URBAN CORROODE AFRICA | Official Store</title>
 
+  <!-- BOOTSTRAP LIBRARY -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- GOOGLE FONT LIBRARY -->
   <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- FONT AWESOME LIBRARY -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+  <!-- SUPABASE LIBRARY -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- PAY STACK LIBRARY -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
 
-  <style>
-    :root { --brand-dark: #0f0f0f; --brand-accent: #ff4d00; --whatsapp-green: #25D366; }
-    body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #1a1a1a; overflow-x: hidden; }
-    h1, h2, .navbar-brand { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
-
-    /* Navbar & Cart Badge */
-    .navbar-brand { white-space: normal; max-width: 75%; line-height: 1.2; font-size: 1.1rem; }
-    .nav-actions-mobile { display: flex; align-items: center; gap: 15px; }
-    .cart-status { position: relative; color: white; text-decoration: none; display: inline-block; line-height: 1; }
-    .cart-badge { position: absolute; top: -8px; right: -10px; background: var(--brand-accent); color: white; font-size: 0.65rem; padding: 2px 5px; border-radius: 50%; font-weight: bold; min-width: 18px; text-align: center; }
-
-    /* Hero Section */
-    .carousel-item-hero { min-height: 100vh; width: 100vw; background-repeat: no-repeat; background-position: top center; background-size: cover; }
-    .carousel-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
-
-    /* Product Cards */
-    .product-card { border: none; background: none; margin-bottom: 2rem; }
-    .product-slider { width: 100%; height: 400px; background: #eee; overflow: hidden; position: relative; }
-    .product-slider img { width: 100%; height: 400px; object-fit: cover; }
-    .view-hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.6); color: white; font-size: 0.6rem; padding: 2px 8px; z-index: 5; text-transform: uppercase; border-radius: 10px; }
-
-    .btn-add { background: #000; color: #fff; border-radius: 0; font-weight: bold; width: 100%; border: none; padding: 12px; font-size: 0.9rem; transition: 0.3s; }
-    .btn-add:hover { background: var(--brand-accent); }
-
-    /* Gallery */
-    .gallery-container { overflow: hidden; position: relative; margin-bottom: 15px; border: 1px solid #333; }
-    .gallery-img { width: 100%; height: 400px; object-fit: cover; filter: grayscale(100%); transition: 0.6s; }
-    .gallery-container:hover .gallery-img { filter: grayscale(0%); transform: scale(1.05); }
-
-    /* Order Summary (Bag) */
-    #bag-summary { background: #111; color: #fff; padding: 20px; margin-bottom: 20px; border-left: 5px solid var(--brand-accent); }
-    .bag-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding: 10px 0; }
-    .remove-btn { color: #ff4d4d; cursor: pointer; transition: 0.3s; font-size: 1rem; margin-left: 10px; }
-    .remove-btn:hover { color: #fff; transform: scale(1.2); }
-
-    /* WhatsApp Float */
-    .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: var(--whatsapp-green); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 1000; transition: 0.3s; text-decoration: none; }
-    .social-link { color: white; font-size: 1.4rem; margin: 0 12px; text-decoration: none; transition: 0.3s; display: inline-block; }
-    .social-link:hover { color: var(--brand-accent); transform: translateY(-3px); }
-  </style>
+  <!-- TEMPLATE CSS -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<a href="https://wa.me/233554914575" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/233509157313" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
+<!-- NAVIGATION BAR START -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow">
   <div class="container">
-    <a class="navbar-brand fw-bold" href="#">URBAN <br class="d-lg-none"> CORRODE<br class="d-lg-none"> AFRICA</a>
+    <a class="navbar-brand fw-bold" href="#">URBAN <br class="d-lg-none"> CORROODE<br class="d-lg-none"> AFRICA</a>
 
     <div class="nav-actions-mobile d-flex align-items-center order-lg-last">
       <a href="#order" class="cart-status me-2">
@@ -79,7 +53,9 @@
     </div>
   </div>
 </nav>
+<!-- NAVIGATION BAR END -->
 
+<!-- HERO CAROUSEL START -->
 <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <!-- Optional: Add Indicators (the small dots at the bottom) -->
   <div class="carousel-indicators">
@@ -93,7 +69,7 @@
     <div class="carousel-item carousel-item-hero active" style="background-image: url('images/street uca pull over.jpg');">
       <div class="carousel-overlay">
         <div class="container px-4 text-center">
-          <h1 class="display-3 fw-bold mb-3">URBAN CORRODE AFRICA</h1>
+          <h1 class="display-3 fw-bold mb-3">URBAN CORROODE AFRICA</h1>
           <p class="h5 mb-4 opacity-75">STREETWEAR FOR THE GRITTY. LOCATED AT KsTU.</p>
           <a href="#shop" class="btn btn-outline-light rounded-0 px-5 py-2">EXPLORE COLLECTION</a>
         </div>
@@ -104,7 +80,7 @@
     <div class="carousel-item carousel-item-hero" style="background-image: url('images/street uca crop top.jpg');">
       <div class="carousel-overlay">
         <div class="container px-4 text-center">
-          <h1 class="display-3 fw-bold mb-3">URBAN CORRODE AFRICA</h1>
+          <h1 class="display-3 fw-bold mb-3">URBAN CORROODE AFRICA</h1>
           <p class="h5 mb-4 opacity-75">STREETWEAR FOR THE GRITTY. LOCATED AT KsTU.</p>
           <a href="#shop" class="btn btn-outline-light rounded-0 px-5 py-2">EXPLORE COLLECTION</a>
         </div>
@@ -115,7 +91,7 @@
     <div class="carousel-item carousel-item-hero" style="background-image: url('images/street normal white uca.jpg');">
       <div class="carousel-overlay">
         <div class="container px-4 text-center">
-          <h1 class="display-3 fw-bold mb-3">URBAN CORRODE AFRICA</h1>
+          <h1 class="display-3 fw-bold mb-3">URBAN CORROODE AFRICA</h1>
           <p class="h5 mb-4 opacity-75">STREETWEAR FOR THE GRITTY. LOCATED AT KsTU.</p>
           <a href="#shop" class="btn btn-outline-light rounded-0 px-5 py-2">EXPLORE COLLECTION</a>
         </div>
@@ -131,11 +107,14 @@
     <span class="carousel-control-next-icon"></span>
   </button>
 </div>
+<!-- HERO CAROUSEL END -->
 
+<!-- COLLECTIONS START -->
 <section id="shop" class="py-5 bg-white">
   <div class="container">
     <h2 class="text-center mb-5 border-bottom pb-3">THE DROPS</h2>
 
+    <!-- WHITE COLLECTION START -->
     <div class="row g-4 mb-5">
       <div class="col-12"><h4 class="fw-bold mb-4">WHITE COLLECTION</h4></div>
 
@@ -196,7 +175,9 @@
         </div>
       </div>
     </div>
+    <!-- WHITE COLLECTION END -->
 
+    <!-- BLACK COLLECTION START -->
     <div class="row g-4">
       <div class="col-12"><h4 class="fw-bold mb-4">BLACK COLLECTION</h4></div>
 
@@ -257,12 +238,17 @@
         </div>
       </div>
     </div>
+    <!-- BLACK COLLECTION END -->
+
   </div>
 </section>
+<!-- COLLECTIONS END -->
 
+
+<!-- GALLERY SECTION START -->
 <section id="gallery" class="py-5 bg-dark text-white text-center">
   <div class="container">
-    <h2 class="mb-3">JOIN THE CORRODE TRIBE</h2>
+    <h2 class="mb-3">JOIN THE CORROODE TRIBE</h2>
     <p class="lead mb-5 text-secondary px-3">WhatsApp a photo to be featured on our platforms.</p>
     <div class="row g-3">
       <div class="col-md-4"><div class="gallery-container"><img src="images/streep%20uca%20crop%20top%203.jpg" class="gallery-img"></div></div>
@@ -271,7 +257,10 @@
     </div>
   </div>
 </section>
+<!-- GALLERY SECTION END -->
 
+
+<!-- PAYMENT AND BAG START -->
 <section id="order" class="py-5 bg-light">
   <div class="container px-4" style="max-width: 800px;">
     <div class="card p-4 p-md-5 shadow-lg border-0 rounded-0">
@@ -316,173 +305,30 @@
     </div>
   </div>
 </section>
+<!-- PAYMENT AND BAG END -->
 
+
+<!-- FOOTER START -->
 <footer class="py-5 bg-dark text-white text-center">
   <div class="container">
     <p class="footer-social-title text-uppercase mb-3">FOLLOW US ON ALL SOCIAL MEDIA PLATFORMS</p>
-    <p class="small mb-4 text-secondary">@urbancorrodeafrica</p>
+    <p class="small mb-4 text-secondary">@urbancorroodeafrica</p>
     <div class="mb-5">
-      <a href="https://facebook.com/urbancorrodeafrica" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://wa.me/233554914575" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://instagram.com/urbancorrodeafrica" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://tiktok.com/@urbancorrodeafrica" class="social-link" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://facebook.com/urbancorroodeafrica" class="social-link" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://wa.me/233509157313" class="social-link" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://instagram.com/urbancorroodeafrica" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://tiktok.com/@urbancorroodeafrica" class="social-link" target="_blank"><i class="fab fa-tiktok"></i></a>
     </div>
-    <p class="mb-0 small opacity-50">© 2026 URBAN CORRODE AFRICA. BY SELMAN CREATIONS.</p>
+    <p class="mb-0 small opacity-50">© 2026 URBAN CORROODE AFRICA. BY SELMAN CREATIONS.</p>
   </div>
 </footer>
+<!-- FOOTER END -->
 
+<!-- BOOTSTRAP JAVASCRIPT -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  // --- INITIALIZE SUPABASE ---
-  const SUPABASE_URL = 'https://tcnbrajpchavyccfjbdu.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_c-tY_nSFpJYFE71AfwI6kQ_jb2OXm5Q';
-  const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  let bag = {};
+<!-- TEMPLATE JAVASCRIPT -->
+<script src="script.js"></script>
 
-  function addToBag(btn, name, price, sizeId) {
-    const size = document.getElementById(sizeId).value;
-    const itemKey = `${name}-${size}`;
-    if (bag[itemKey]) { bag[itemKey].qty += 1; }
-    else { bag[itemKey] = { name: name, size: size, price: price, qty: 1 }; }
-    updateUI();
-
-    const originalText = btn.innerText;
-    btn.innerText = "ADDED!";
-    btn.style.background = "#ff4d00";
-    setTimeout(() => {
-      btn.innerText = originalText;
-      btn.style.background = "#000";
-    }, 800);
-  }
-
-  function removeFromBag(key) {
-    if (bag[key].qty > 1) { bag[key].qty -= 1; }
-    else { delete bag[key]; }
-    updateUI();
-  }
-
-  function updateUI() {
-    const summary = document.getElementById('bag-summary');
-    const payBtn = document.getElementById('payBtn');
-    const deliveryFee = parseInt(document.getElementById('deliveryZone').value);
-    const cartCount = document.getElementById('cart-count');
-    let itemsSubtotal = 0;
-    let totalItemsCount = 0;
-    const keys = Object.keys(bag);
-
-    if (keys.length === 0) {
-      summary.innerHTML = '<p class="text-muted text-center mb-0">Your bag is empty. Pick your drip above.</p>';
-      payBtn.disabled = true;
-      cartCount.innerText = 0;
-      return;
-    }
-
-    let html = '<h6 class="fw-bold text-danger mb-3">ORDER SUMMARY:</h6>';
-    keys.forEach(key => {
-      const item = bag[key];
-      itemsSubtotal += (item.price * item.qty);
-      totalItemsCount += item.qty;
-      html += `<div class="bag-item text-white">
-                <span>${item.name} (${item.size}) <strong>x${item.qty}</strong></span>
-                <span>${item.price * item.qty} GHS <i class="fas fa-trash-alt remove-btn" onclick="removeFromBag('${key}')"></i></span>
-             </div>`;
-    });
-
-    const finalTotal = itemsSubtotal + deliveryFee;
-    html += `<hr style="border-color: #444;">
-         <div class="d-flex justify-content-between small text-secondary"><span>Items:</span><span>${itemsSubtotal} GHS</span></div>
-         <div class="d-flex justify-content-between small text-secondary"><span>Delivery:</span><span>${deliveryFee === 0 ? 'FREE' : deliveryFee + ' GHS'}</span></div>
-         <h4 class="mt-3 text-white">TOTAL: ${finalTotal} GHS</h4>`;
-
-    summary.innerHTML = html;
-    payBtn.disabled = false;
-    cartCount.innerText = totalItemsCount;
-  }
-
-  // --- UPDATED PAYMENT LOGIC ---
-  document.getElementById('paymentForm').onsubmit = function(e) {
-    e.preventDefault();
-    console.log("Form Submitted...");
-
-    const emailField = document.getElementById('custEmail');
-    const deliveryZoneSelect = document.getElementById('deliveryZone');
-
-    // Basic Validation
-    if(!emailField.value || Object.keys(bag).length === 0) {
-      alert("Please fill in your email and add items to your bag.");
-      return;
-    }
-
-    const deliveryFee = parseInt(deliveryZoneSelect.value);
-    let itemsSubtotal = 0;
-    let itemDescriptions = [];
-
-    Object.keys(bag).forEach(key => {
-      const item = bag[key];
-      itemsSubtotal += (item.price * item.qty);
-      itemDescriptions.push(`${item.name} (${item.size}) x${item.qty}`);
-    });
-
-    const finalTotal = itemsSubtotal + deliveryFee;
-    const itemsString = itemDescriptions.join(', ');
-    const zoneText = deliveryZoneSelect.options[deliveryZoneSelect.selectedIndex].text;
-
-    console.log("Calculated Total:", finalTotal);
-
-    // Paystack Configuration
-    const handler = PaystackPop.setup({
-      key: 'pk_test_a5750e7555808df4446ff2fc42daf8fb9454d13b',
-      email: emailField.value,
-      amount: Math.round(finalTotal * 100), // Ensure it's a clean integer
-      currency: 'GHS',
-      callback: function(response) {
-        console.log("Payment Successful, Reference:", response.reference);
-        saveToSupabase(response.reference, itemsString, zoneText, finalTotal);
-      },
-      onClose: function() {
-        alert('Transaction cancelled.');
-      }
-    });
-
-    console.log("Attempting to open Paystack...");
-    handler.openIframe();
-  };
-
-  async function saveToSupabase(ref, items, zone, total) {
-    const name = document.getElementById('custName').value;
-    const loc = document.getElementById('custAddress').value;
-    const phone = document.getElementById('custPhone').value;
-    const email = document.getElementById('custEmail').value;
-
-    console.log("Attempting to save to Supabase...");
-
-    const { data, error } = await _supabase.from('ORDERS').insert([{
-      customer_name: name,
-      customer_email: email,
-      customer_phone: phone,
-      address: loc,
-      delivery_zone: zone,
-      items: items,
-      total_price: total,
-      paystack_ref: ref,
-      status: 'Pending'
-    }]);
-
-    if (error) {
-      // THIS WILL TELL US EXACTLY WHAT IS WRONG
-      console.error("SUPABASE ERROR DETAILS:", error.message);
-      alert("Order paid but failed to save to dashboard: " + error.message);
-    } else {
-      console.log("SUCCESS: Order saved to dashboard!");
-    }
-
-    // Redirect to WhatsApp (Moved inside a timeout so you can see the error first)
-    setTimeout(() => {
-      const msg = `*PAID ORDER - REF: ${ref}*%0A%0A*Items:* ${items}%0A*Zone:* ${zone}%0A*Total Paid:* ${total} GHS%0A*Name:* ${name}%0A*Address:* ${loc}`;
-      window.location.href = `https://wa.me/233554914575?text=${msg}`;
-    }, 1500);
-  }
-</script>
 </body>
 </html>

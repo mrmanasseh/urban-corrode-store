@@ -1,0 +1,38 @@
+:root { --brand-dark: #0f0f0f; --brand-accent: #ff4d00; --whatsapp-green: #25D366; }
+body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; color: #1a1a1a; overflow-x: hidden; }
+h1, h2, .navbar-brand { font-family: 'Syncopate', sans-serif; text-transform: uppercase; letter-spacing: 2px; }
+
+/* Navbar & Cart Badge */
+.navbar-brand { white-space: normal; max-width: 75%; line-height: 1.2; font-size: 1.1rem; }
+.nav-actions-mobile { display: flex; align-items: center; gap: 15px; }
+.cart-status { position: relative; color: white; text-decoration: none; display: inline-block; line-height: 1; }
+.cart-badge { position: absolute; top: -8px; right: -10px; background: var(--brand-accent); color: white; font-size: 0.65rem; padding: 2px 5px; border-radius: 50%; font-weight: bold; min-width: 18px; text-align: center; }
+
+/* Hero Section */
+.carousel-item-hero { min-height: 100vh; width: 100vw; background-repeat: no-repeat; background-position: top center; background-size: cover; }
+.carousel-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; color: white; text-align: center; }
+
+/* Product Cards */
+.product-card { border: none; background: none; margin-bottom: 2rem; }
+.product-slider { width: 100%; height: 400px; background: #eee; overflow: hidden; position: relative; }
+.product-slider img { width: 100%; height: 400px; object-fit: cover; }
+.view-hint { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.6); color: white; font-size: 0.6rem; padding: 2px 8px; z-index: 5; text-transform: uppercase; border-radius: 10px; }
+
+.btn-add { background: #000; color: #fff; border-radius: 0; font-weight: bold; width: 100%; border: none; padding: 12px; font-size: 0.9rem; transition: 0.3s; }
+.btn-add:hover { background: var(--brand-accent); }
+
+/* Gallery */
+.gallery-container { overflow: hidden; position: relative; margin-bottom: 15px; border: 1px solid #333; }
+.gallery-img { width: 100%; height: 400px; object-fit: cover; filter: grayscale(100%); transition: 0.6s; }
+.gallery-container:hover .gallery-img { filter: grayscale(0%); transform: scale(1.05); }
+
+/* Order Summary (Bag) */
+#bag-summary { background: #111; color: #fff; padding: 20px; margin-bottom: 20px; border-left: 5px solid var(--brand-accent); }
+.bag-item { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #333; padding: 10px 0; }
+.remove-btn { color: #ff4d4d; cursor: pointer; transition: 0.3s; font-size: 1rem; margin-left: 10px; }
+.remove-btn:hover { color: #fff; transform: scale(1.2); }
+
+/* WhatsApp Float */
+.whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: var(--whatsapp-green); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3); z-index: 1000; transition: 0.3s; text-decoration: none; }
+.social-link { color: white; font-size: 1.4rem; margin: 0 12px; text-decoration: none; transition: 0.3s; display: inline-block; }
+.social-link:hover { color: var(--brand-accent); transform: translateY(-3px); }
